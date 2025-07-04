@@ -1,0 +1,244 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Herbal Glow</title>
+    <!-- Anton Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+        }
+
+        nav {
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+
+        .brand {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8em;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            max-width: 600px;
+            margin: 0 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 0;
+            border: none;
+            font-size: 1em;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 1em;
+            align-items: center;
+        }
+
+        .nav-icons i {
+            cursor: pointer;
+        }
+
+        .hero {
+            background: url('{% static "images/banner.png" %}') no-repeat center center;
+            background-size: cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+            font-size: 2.5em;
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .category-card {
+            position: relative;
+            width: 280px;
+            height: 360px;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: scale(1.03);
+        }
+
+        .overlay-content {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 80%);
+            width: 100%;
+            padding: 15px;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .overlay-content h4 {
+            margin: 0 0 10px;
+            font-size: 1.2em;
+            font-family: 'Anton', sans-serif;
+        }
+
+        .category-card .view-button {
+            margin: 0;
+            padding: 6px 14px;
+            font-size: 0.9em;
+            background-color: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 0;
+            display: inline-block;
+        }
+
+        .category-card .view-button:hover {
+            background-color: #333;
+        }
+
+        h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        footer {
+            background-color: #f8f8f8;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+        }
+        hr {
+    border: none;
+    height: 2px;
+    background-color: #ccc; /* Light grey line */
+    margin: 40px auto;
+    width: 80%; /* You can adjust width */
+}
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="brand">Herbal Glow</div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search for products...">
+    </div>
+    <div class="nav-icons">
+        <i class="fas fa-map-marker-alt" title="Location"></i>
+        <i class="fas fa-user" title="Account"></i>
+        <i class="fas fa-shopping-cart" title="Cart"></i>
+    </div>
+</nav>
+
+<div class="hero"></div>
+<hr>
+
+<!-- OUR CATEGORIES Section -->
+
+
+    <h2>SHOP BY PRODUCT TYPE</h2>
+    <div class="card-container">
+        <div class="category-card" style="background-image: url('{% static "images/product1.jpg" %}');">
+            <div class="overlay-content">
+                <h4>Relax & Refresh</h4>
+                <a href="{% url 'category_products' 'relax' %}" class="view-button">View Products</a>
+            </div>
+        </div>
+        <div class="category-card" style="background-image: url('{% static "images/product2.jpg" %}');">
+            <div class="overlay-content">
+                <h4>Eco-Friendly Care</h4>
+                <a href="{% url 'category_products' 'eco' %}" class="view-button">View Products</a>
+            </div>
+        </div>
+        <div class="category-card" style="background-image: url('{% static "images/product3.jpg" %}');">
+            <div class="overlay-content">
+                <h4>Herbal Hair Care</h4>
+                <a href="{% url 'category_products' 'hair' %}" class="view-button">View Products</a>
+            </div>
+        </div>
+        <div class="category-card" style="background-image: url('{% static "images/product4.jpg" %}');">
+            <div class="overlay-content">
+                <h4>Facepack & Scrubs</h4>
+                <a href="{% url 'category_products' 'powders' %}" class="view-button">View Products</a>
+            </div>
+        </div>
+    </div>
+
+<hr>
+<!-- POPULAR KITS Section (Unchanged) -->
+
+   <h2>CURATED WELLNESS COLLECTIONS</h2>
+<div class="card-container">
+    <div class="category-card" style="background-image: url('{% static "images/kit1.jpg" %}');">
+        <div class="overlay-content">
+            <h4>Herbal Hair Care</h4>
+           <a href="{% url 'category_products' 'kits' %}" class="view-button">View Kit</a>
+
+        </div>
+    </div>
+    <div class="category-card" style="background-image: url('{% static "images/kit2.jpg" %}');">
+        <div class="overlay-content">
+            <h4>Seasonal Essentials</h4>
+            <a href="#" class="view-button">View Kit</a>
+        </div>
+    </div>
+    <div class="category-card" style="background-image: url('{% static "images/kit3.jpg" %}');">
+        <div class="overlay-content">
+            <h4>Face Care Fixes</h4>
+            <a href="#" class="view-button">View Kit</a>
+        </div>
+    </div>
+    <div class="category-card" style="background-image: url('{% static "images/kit4.jpg" %}');">
+        <div class="overlay-content">
+            <h4>Herbal Gentleman</h4>
+            <a href="#" class="view-button">View Kit</a>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <p><strong>Herbal Glow</strong> | Trivandrum, Kerala</p>
+    <p>&copy; 2025 Herbal Glow. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
